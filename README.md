@@ -16,7 +16,7 @@ sqlite - nothing, very simple use. No need any tricks.
 
 app.py
 ------
-<code>
+```python
     import bottle
     from bottle import request
     from spouk_bottle_peewee import DatabaseMiddleware
@@ -35,11 +35,11 @@ app.py
     app.route('/', method=['get','post'], callback=hand.root)
 
     bottle.run(app=appdb, host='127.0.0.1', port=2000)
-</code>
+```
 
 models.py
 ---------
-<code>
+```python
        
     from peewee import *
     from datetime import datetime
@@ -61,12 +61,11 @@ models.py
         userid = IntegerField()
 
     dbobj.blog_cook = blog_cook
-
-</code>
+```
 
 handlers.py
 ------------
-<code>
+```python
     
 from models import dbobj
 
@@ -79,12 +78,11 @@ class Handlers(object):
     def root(self):
         res = self.db.blog_cook.select()
         return self.app.render('index.html', result = res)
-
-</code>
+```
 
 index.html
 ---------
-<code>
+```html
     <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -127,7 +125,7 @@ index.html
         {% endfor %}
         </tbody>
     </table>
-</code>
+```
 
 
 
