@@ -62,6 +62,20 @@ models.py
 
     dbobj.blog_cook = blog_cook
 ```
+config.py
+---------
+```python
+
+DATABASE_PSQL = {
+    'host': 'localhost',
+    'name': 'session',
+    'engine': 'playhouse.pool.PooledPostgresqlDatabase',
+    'user': 'anonymous',
+    'password': 'anonymous',
+    'port': 5432,
+}
+
+```
 
 handlers.py
 ------------
