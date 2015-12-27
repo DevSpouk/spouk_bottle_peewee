@@ -14,8 +14,7 @@ class ImproperlyConfigured(Exception):
 
 class Database(object):
     """peewee database support for bottle"""
-    name = 'spouk_bottle_peewee'
-    api = 2
+
     database_types = dict(
         mysql='mysql',
         psql='psql',
@@ -29,15 +28,6 @@ class Database(object):
         self.app = None
         self.initdatabase()
         self.Model = self.get_model_class()
-
-    def setup(self, app):
-        self.app = app
-        self.app.db= self
-        self.app.add_hook('before_request', self.connect_db)
-        self.app.add_hook('after_request', self.close_db)
-
-    def apply(self,callback, context):
-        return callback
 
     def load_class(self, s):
         path, klass = s.rsplit('.', 1)
